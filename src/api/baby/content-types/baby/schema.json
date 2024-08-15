@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "babies",
+  "info": {
+    "singularName": "baby",
+    "pluralName": "babies",
+    "displayName": "Baby",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "minLength": 3
+    },
+    "date_of_birth": {
+      "type": "date",
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female",
+        "Other"
+      ]
+    },
+    "profile_picture": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "parents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::parent.parent"
+    },
+    "diaper_changes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diaper-change.diaper-change",
+      "mappedBy": "baby"
+    },
+    "feedings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feeding.feeding",
+      "mappedBy": "baby"
+    },
+    "sleep_records": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sleep-record.sleep-record",
+      "mappedBy": "baby"
+    }
+  }
+}

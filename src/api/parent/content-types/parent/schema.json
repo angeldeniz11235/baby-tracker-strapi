@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "parents",
+  "info": {
+    "singularName": "parent",
+    "pluralName": "parents",
+    "displayName": "Parent"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "minLength": 3
+    },
+    "email": {
+      "type": "email",
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "phone_number": {
+      "type": "string",
+      "maxLength": 20,
+      "minLength": 5
+    },
+    "babies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::baby.baby"
+    },
+    "diaper_changes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diaper-change.diaper-change",
+      "mappedBy": "parent"
+    },
+    "feedings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feeding.feeding",
+      "mappedBy": "parent"
+    },
+    "sleep_records": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sleep-record.sleep-record",
+      "mappedBy": "parent"
+    }
+  }
+}

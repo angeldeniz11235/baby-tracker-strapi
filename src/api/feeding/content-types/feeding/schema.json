@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feedings",
+  "info": {
+    "singularName": "feeding",
+    "pluralName": "feedings",
+    "displayName": "Feeding"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "datetime",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Breastfeeding",
+        "Formula",
+        "Solid Food"
+      ],
+      "required": true
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "baby": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::baby.baby",
+      "inversedBy": "feedings"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::parent.parent",
+      "inversedBy": "feedings"
+    }
+  }
+}

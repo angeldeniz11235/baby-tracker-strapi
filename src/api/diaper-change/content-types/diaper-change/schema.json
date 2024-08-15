@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diaper_changes",
+  "info": {
+    "singularName": "diaper-change",
+    "pluralName": "diaper-changes",
+    "displayName": "DiaperChange"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "datetime",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Wet",
+        "Soiled",
+        "Both"
+      ],
+      "required": true
+    },
+    "baby": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::baby.baby",
+      "inversedBy": "diaper_changes"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::parent.parent",
+      "inversedBy": "diaper_changes"
+    }
+  }
+}
